@@ -5,7 +5,6 @@
         menu.classList.toggle("active");
       });
 
-      // Close menu when clicking a link
       document.querySelectorAll(".navbar-menu a").forEach((link) => {
         link.addEventListener("click", () => {
           menu.classList.remove("active");
@@ -16,7 +15,6 @@
         });
       });
 
-      // Set active link based on scroll (optional)
       window.addEventListener("scroll", () => {
         let current = "";
         const sections = document.querySelectorAll("section");
