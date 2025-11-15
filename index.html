@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Achintha Deshan Portfolio</title>
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Internal CSS -->
+    <style>
+      /* Reset & Base */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: #fff;
+        background-color: #0a1128;
+        overflow-x: hidden;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 15px;
+      }
+
+      /* Navbar */
+      .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: rgba(10, 17, 40, 0.95);
+        backdrop-filter: blur(10px);
+        padding: 1rem 0;
+        z-index: 1000;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      }
+
+      .navbar-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 15px;
+      }
+
+      .navbar-brand {
+        font-size: 1.6rem;
+        font-weight: bold;
+        color: #00d4ff;
+      }
+
+      .navbar-menu {
+        display: flex;
+        list-style: none;
+        gap: 2rem;
+      }
+
+      .navbar-menu li a {
+        color: #ccc;
+        font-weight: 500;
+        font-size: 1rem;
+        position: relative;
+        transition: color 0.3s ease;
+      }
+
+      .navbar-menu li a:hover,
+      .navbar-menu li a.active {
+        color: #00d4ff;
+      }
+
+      .navbar-menu li a::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -6px;
+        left: 0;
+        background-color: #00d4ff;
+        transition: width 0.3s ease;
+      }
+
+      .navbar-menu li a:hover::after,
+      .navbar-menu li a.active::after {
+        width: 100%;
+      }
+
+      .navbar-toggler {
+        display: none;
+        background: none;
+        border: none;
+        font-size: 1.8rem;
+        color: #fff;
+        cursor: pointer;
+      }
+
+      /* Mobile Menu */
+      @media (max-width: 992px) {
+        .navbar-toggler {
+          display: block;
+        }
+
+        .navbar-menu {
+          position: fixed;
+          top: 70px;
+          left: -100%;
+          width: 100%;
+          height: calc(100vh - 70px);
+          background-color: rgba(10, 17, 40, 0.98);
+          flex-direction: column;
+          justify-content: flex-start;
+          align-items: center;
+          padding-top: 2rem;
+          transition: left 0.4s ease;
+          backdrop-filter: blur(10px);
+          overflow-y: auto;
+        }
+
+        .navbar-menu.active {
+          left: 0;
+        }
+
+        .navbar-menu li {
+          margin: 1rem 0;
+        }
+
+        .navbar-menu li a {
+          font-size: 1.2rem;
+          padding: 0.5rem 1rem;
+        }
+      }
+
+      /* Hero Section */
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        padding: 100px 0 50px;
+        background: linear-gradient(135deg, #0a1128 0%, #001f3f 100%);
+      }
+
+      .hero-box {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 3rem;
+      }
+
+      .hero-image {
+        flex: 1;
+        min-width: 250px;
+        text-align: center;
+      }
+
+      .profileimage {
+        width: 250px;
+        height: 250px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 5px solid #00d4ff;
+        box-shadow: 0 0 30px rgba(0, 212, 255, 0.4);
+      }
+
+      .hero-text {
+        flex: 2;
+        min-width: 300px;
+      }
+
+      .hero-text h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+      }
+
+      .hero-text h1 span {
+        color: #00d4ff;
+      }
+
+      .hero-text p {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+        color: #ccc;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 12px 30px;
+        background-color: #00d4ff;
+        color: #fff;
+        border-radius: 50px;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        text-align: center;
+      }
+
+      .btn:hover {
+        background-color: #00aaff;
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(0, 212, 255, 0.3);
+      }
+
+      .social-links {
+        display: flex;
+        gap: 1rem;
+        margin-top: 1.5rem;
+      }
+
+      .social-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        transition: all 0.3s ease;
+      }
+
+      .social-icon:hover {
+        background-color: #00d4ff;
+        transform: translateY(-5px);
+      }
+
+      /* Section Common */
+      section {
+        padding: 80px 0;
+      }
+
+      .text-center {
+        text-align: center;
+      }
+
+      h2 {
+        font-size: 2.5rem;
+        margin-bottom: 3rem;
+        position: relative;
+        display: inline-block;
+      }
+
+      .text-gradient {
+        background: linear-gradient(90deg, #00d4ff, #00ff88);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .text-warning {
+        color: #ffd700 !important;
+      }
+
+      /* Projects */
+      #projects {
+        background-color: #0a1128;
+      }
+
+      .project-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+      }
+
+      .project-card {
+        background-color: #1a1a2e;
+        border-radius: 15px;
+        overflow: hidden;
+        transition: transform 0.3s ease;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      .project-card:hover {
+        transform: translateY(-10px);
+      }
+
+      .project-card img {
+        height: 200px;
+        object-fit: cover;
+      }
+
+      .card-body {
+        padding: 1.5rem;
+      }
+
+      .card-title {
+        font-size: 1.4rem;
+        margin-bottom: 0.75rem;
+        color: #00d4ff;
+      }
+
+      .card-text {
+        color: #ccc;
+        margin-bottom: 1rem;
+        font-size: 0.95rem;
+      }
+
+      .project-btn {
+        background-color: #00d4ff;
+        color: #fff;
+        padding: 8px 16px;
+        border-radius: 25px;
+        font-size: 0.9rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .project-btn:hover {
+        background-color: #00aaff;
+      }
+
+      /* Services */
+      #services {
+        background-color: #08142b;
+      }
+
+      .service-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+      }
+
+      .service-card {
+        background-color: rgba(255, 255, 255, 0.05);
+        border-radius: 15px;
+        padding: 2rem;
+        text-align: center;
+        transition: all 0.3s ease;
+        border: 1px solid rgba(0, 212, 255, 0.2);
+      }
+
+      .service-card:hover {
+        background-color: rgba(0, 212, 255, 0.1);
+        transform: translateY(-5px);
+      }
+
+      .service-icon {
+        font-size: 3rem;
+        color: #00d4ff;
+        margin-bottom: 1rem;
+      }
+
+      .service-card h5 {
+        font-size: 1.4rem;
+        margin-bottom: 1rem;
+      }
+
+      /* Skills */
+      #skills {
+        background-color: #0a1128;
+      }
+
+      .skill-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 1.5rem;
+        justify-items: center;
+      }
+
+      .skill-card {
+        text-align: center;
+        padding: 1rem;
+        transition: transform 0.3s ease;
+      }
+
+      .skill-card:hover {
+        transform: scale(1.1);
+      }
+
+      .skill-icon {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 0.5rem;
+        filter: drop-shadow(0 0 5px rgba(0, 212, 255, 0.5));
+      }
+
+      .skill-card h6 {
+        font-size: 1rem;
+        color: #ccc;
+      }
+
+      /* Gallery */
+      #gallery {
+        background-color: #08142b;
+      }
+
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+      }
+
+      .gallery-item {
+        position: relative;
+        overflow: hidden;
+        border-radius: 15px;
+        cursor: pointer;
+      }
+
+      .gallery-item img {
+        transition: transform 0.5s ease;
+      }
+
+      .gallery-item:hover img {
+        transform: scale(1.1);
+      }
+
+      .overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+        color: #fff;
+        padding: 1.5rem 1rem 1rem;
+        text-align: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .gallery-item:hover .overlay {
+        opacity: 1;
+      }
+
+      /* About */
+      #about {
+        background: linear-gradient(135deg, #0a1128, #031440);
+      }
+
+      .about-content {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 3rem;
+        align-items: center;
+      }
+
+      .about-img-wrapper {
+        position: relative;
+        flex: 1;
+        min-width: 250px;
+      }
+
+      .about-img {
+        width: 100%;
+        max-width: 350px;
+        border-radius: 20px;
+        border: 4px solid #00d4ff;
+        box-shadow: 0 0 30px rgba(0, 212, 255, 0.3);
+      }
+
+      .about-img-overlay {
+        position: absolute;
+        top: -10px;
+        left: -10px;
+        right: -10px;
+        bottom: -10px;
+        border: 2px solid #00d4ff;
+        border-radius: 25px;
+        opacity: 0.3;
+      }
+
+      .about-info {
+        flex: 2;
+        min-width: 300px;
+      }
+
+      .about-info li {
+        margin-bottom: 1rem;
+        font-size: 1.1rem;
+      }
+
+      .about-info i {
+        width: 20px;
+      }
+
+      .about-btn {
+        background-color: transparent;
+        border: 2px solid #00d4ff;
+        color: #00d4ff;
+        padding: 12px 25px;
+        border-radius: 50px;
+        margin-top: 1.5rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .about-btn:hover {
+        background-color: #00d4ff;
+        color: #fff;
+      }
+
+      /* Contact */
+      #contact {
+        background: linear-gradient(135deg, #08142b, #0a1128);
+      }
+
+      .contact-content {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 3rem;
+        align-items: start;
+      }
+
+      .contact-info {
+        flex: 1;
+        min-width: 300px;
+      }
+
+      .contact-info ul {
+        list-style: none;
+      }
+
+      .contact-info li {
+        margin-bottom: 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        font-size: 1.1rem;
+      }
+
+      .contact-form {
+        flex: 2;
+        min-width: 300px;
+      }
+
+      .form-container {
+        background-color: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(5px);
+        padding: 2rem;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      }
+
+      .form-control {
+        width: 100%;
+        padding: 12px 15px;
+        margin-bottom: 1rem;
+        background-color: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(0, 212, 255, 0.3);
+        border-radius: 10px;
+        color: #fff;
+        font-size: 1rem;
+      }
+
+      .form-control:focus {
+        outline: none;
+        border-color: #00d4ff;
+        box-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
+      }
+
+      .form-control::placeholder {
+        color: #aaa;
+      }
+
+      textarea.form-control {
+        resize: vertical;
+        min-height: 120px;
+      }
+
+      .btn-primary {
+        background-color: #00d4ff;
+        color: #fff;
+        border: none;
+        padding: 12px;
+        border-radius: 10px;
+        font-weight: bold;
+        cursor: pointer;
+        width: 100%;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+      }
+
+      .btn-primary:hover {
+        background-color: #00aaff;
+        transform: translateY(-2px);
+      }
+
+      /* Mobile Menu */
+      @media (max-width: 992px) {
+        .navbar-toggler {
+          display: block;
+        }
+
+        .nav-links {
+          position: fixed;
+          top: 70px;
+          left: -100%;
+          width: 100%;
+          background-color: rgba(10, 17, 40, 0.98);
+          flex-direction: column;
+          align-items: center;
+          padding: 2rem 0;
+          transition: left 0.4s ease;
+          backdrop-filter: blur(10px);
+        }
+
+        .nav-links.active {
+          left: 0;
+        }
+
+        .hero-text h1 {
+          font-size: 2.2rem;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .hero-box {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .hero-text h1 {
+          font-size: 2rem;
+        }
+
+        h2 {
+          font-size: 2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="navbar-container">
+        <a href="#" class="navbar-brand">Achintha Deshan</a>
+        <button class="navbar-toggler">Menu</button>
+        <ul class="navbar-menu">
+          <li><a href="#home" class="active">Home</a></li>
+          <li><a href="#projects">Project</a></li>
+          <li><a href="#services">Service</a></li>
+          <li><a href="#skills">Skill</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <div class="container">
+        <div class="hero-box">
+          <div class="hero-image">
+            <img
+              class="profileimage"
+              src="Assest/profile.jpg"
+              alt="Achintha Deshan"
+            />
+          </div>
+          <div class="hero-text">
+            <h1>Hi, I'm <span>Achintha Deshan</span></h1>
+            <p>
+              A passionate <strong>Web Developer</strong> &
+              <strong>Designer</strong> creating elegant, responsive, modern web
+              experiences.
+            </p>
+            <a href="#contact" class="btn">Hire Me</a>
+            <div class="social-links">
+              <a
+                href="https://web.facebook.com/?_rdc=1&_rdr#"
+                target="_blank"
+                class="social-icon facebook"
+              >
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a
+                href="https://www.linkedin.com/feed/"
+                target="_blank"
+                class="social-icon linkedin"
+              >
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+              <a
+                href="https://github.com/Achintha-deshan"
+                target="_blank"
+                class="social-icon github"
+              >
+                <i class="fab fa-github"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+      <div class="container text-center">
+        <h2 class="text-gradient">My Projects</h2>
+        <div class="project-grid">
+          <div class="project-card">
+            <img src="Assest/Ganewaththaproject.png" alt="Ganewaththa Latex" />
+            <div class="card-body">
+              <h5 class="card-title">Ganewaththa Latex</h5>
+              <p class="card-text">
+                A JavaFX-based business management system designed to handle
+                suppliers, inventory, and factory operations efficiently.
+              </p>
+              <a
+                href="https://github.com/Achintha-deshan/Ganewaththalatex.git"
+                target="_blank"
+                class="project-btn"
+              >
+                View Project
+              </a>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <img src="Assest/tharinduproject.png" alt="Tharindu Tea Center" />
+            <div class="card-body">
+              <h5 class="card-title">Tharindu Tea Center</h5>
+              <p class="card-text">
+                A database-driven system to manage customer orders, tea factory
+                records, and transport details using MySQL and Java.
+              </p>
+              <a
+                href="https://github.com/Achintha-deshan"
+                target="_blank"
+                class="project-btn"
+              >
+                View Project
+              </a>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <img src="Assest/kintopproject.png" alt="Kintop Hotel" />
+            <div class="card-body">
+              <h5 class="card-title">Kintop Hotel</h5>
+              <p class="card-text">
+                A hotel management app developed to manage room bookings,
+                customer records, and payments with a user-friendly UI.
+              </p>
+              <a
+                href="https://github.com/Achintha-deshan/kintophotel.git"
+                target="_blank"
+                class="project-btn"
+              >
+                View Project
+              </a>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <img src="Assest/chatroom.png" alt="Multi Client Chat Room" />
+            <div class="card-body">
+              <h5 class="card-title">Multi Client Chat Room</h5>
+              <p class="card-text">
+                A Java socket-based real-time chat application that supports
+                multiple clients connecting to one server.
+              </p>
+              <a
+                href="https://github.com/Achintha-deshan/MultiClient-chat-room-practical.git"
+                target="_blank"
+                class="project-btn"
+              >
+                View Project
+              </a>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <img src="Assest/drivingschoolproj.png" alt="Driving School" />
+            <div class="card-body">
+              <h5 class="card-title">Driving School</h5>
+              <p class="card-text">System for driving school.</p>
+              <a
+                href="https://github.com/Achintha-deshan/DrivingSchool.git"
+                target="_blank"
+                class="project-btn"
+              >
+                View Project
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services">
+      <div class="container text-center">
+        <h2 class="text-warning">My Services</h2>
+        <div class="service-grid">
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-code"></i>
+            </div>
+            <h5>Web Development</h5>
+            <p>
+              I build responsive, dynamic, and user-friendly websites using
+              modern technologies like HTML, CSS, JavaScript, and Bootstrap.
+            </p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-desktop"></i>
+            </div>
+            <h5>JavaFX Applications</h5>
+            <p>
+              I design and develop interactive desktop applications using JavaFX
+              with clean UI and smooth functionality.
+            </p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-database"></i>
+            </div>
+            <h5>Database Design</h5>
+            <p>
+              I create and manage efficient MySQL databases, integrating them
+              with applications for smooth data handling.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+      <div class="container text-center">
+        <h2 class="text-gradient">My Skills</h2>
+        <div class="skill-grid">
+          <div class="skill-card">
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg"
+              alt="Java"
+              class="skill-icon"
+            />
+            <h6>Java</h6>
+          </div>
+          <div class="skill-card">
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
+              alt="Python"
+              class="skill-icon"
+            />
+            <h6>Python</h6>
+          </div>
+          <div class="skill-card">
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
+              alt="HTML"
+              class="skill-icon"
+            />
+            <h6>HTML</h6>
+          </div>
+          <div class="skill-card">
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
+              alt="CSS"
+              class="skill-icon"
+            />
+            <h6>CSS</h6>
+          </div>
+          <div class="skill-card">
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+              alt="JavaScript"
+              class="skill-icon"
+            />
+            <h6>JavaScript</h6>
+          </div>
+          <div class="skill-card">
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"
+              alt="SQL"
+              class="skill-icon"
+            />
+            <h6>SQL</h6>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery -->
+    <section id="gallery">
+      <div class="container text-center">
+        <h2 class="text-warning">My Gallery</h2>
+        <div class="gallery-grid">
+          <div class="gallery-item">
+            <img
+              src="Assest/ganewaththa.png"
+              class="img-fluid rounded"
+              alt="Project Image 1"
+            />
+            <div class="overlay">
+              <h5>Ganewaththa Latex</h5>
+            </div>
+          </div>
+          <div class="gallery-item">
+            <img
+              src="Assest/tharindu tea.png"
+              class="img-fluid rounded"
+              alt="Project Image 2"
+            />
+            <div class="overlay">
+              <h5>Tharindu Tea Center</h5>
+            </div>
+          </div>
+          <div class="gallery-item">
+            <img
+              src="Assest/Kintophotel.png"
+              class="img-fluid rounded"
+              alt="Project Image 3"
+            />
+            <div class="overlay">
+              <h5>Kintop Hotel</h5>
+            </div>
+          </div>
+          <div class="gallery-item">
+            <img
+              src="Assest/chatroom.png"
+              class="img-fluid rounded"
+              alt="Project Image 4"
+            />
+            <div class="overlay">
+              <h5>Multi Chat Room</h5>
+            </div>
+          </div>
+          <div class="gallery-item">
+            <img
+              src="Assest/Drivingschol.png"
+              class="img-fluid rounded"
+              alt="Project Image 5"
+            />
+            <div class="overlay">
+              <h5>Driving School</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about">
+      <div class="container">
+        <div class="about-content">
+          <div class="about-img-wrapper">
+            <img src="Assest/pf2.jpg" alt="Achintha Deshan" class="about-img" />
+            <div class="about-img-overlay"></div>
+          </div>
+          <div class="about-info">
+            <h2 class="text-gradient">About Me</h2>
+            <p class="lead">
+              Hi, I’m <strong>H.E. Achintha Deshan Vimukthi</strong> from Sri
+              Lanka — a passionate
+              <span style="color: #00d4ff">Web Developer</span> and
+              <span style="color: #00ff88">Freelancer</span> dedicated to
+              building elegant and user-focused designs.
+            </p>
+            <ul class="list-unstyled">
+              <li>
+                <i class="fas fa-user text-primary"></i>
+                <strong>Full Name:</strong> H.E. Achintha Deshan Vimukthi
+              </li>
+              <li>
+                <i class="fas fa-map-marker-alt text-warning"></i>
+                <strong>Location:</strong> Sri Lanka
+              </li>
+              <li>
+                <i class="fas fa-briefcase text-success"></i>
+                <strong>Freelancer:</strong> Available
+              </li>
+              <li>
+                <i class="fas fa-birthday-cake text-danger"></i>
+                <strong>Date of Birth:</strong> 2003.05.26
+              </li>
+            </ul>
+            <a
+              href="https://github.com/Achintha-deshan"
+              target="_blank"
+              class="about-btn"
+            >
+              Visit My GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <div class="container">
+        <h2 class="text-center text-warning">Contact Me</h2>
+        <div class="contact-content">
+          <div class="contact-info">
+            <h4>Let's Connect</h4>
+            <p>
+              If you’d like to collaborate or have a project in mind, feel free
+              to reach out!
+            </p>
+            <ul>
+              <li>
+                <i class="fas fa-envelope text-primary"></i>
+                <strong>Email:</strong> achinthadeshan099@gmail.com
+              </li>
+              <li>
+                <i class="fas fa-phone text-success"></i>
+                <strong>Phone:</strong> +94 75 33 87 820
+              </li>
+              <li>
+                <i class="fas fa-map-marker-alt text-danger"></i>
+                <strong>Location:</strong> Sri Lanka
+              </li>
+            </ul>
+            <div class="social-links">
+              <a
+                href="https://web.facebook.com/?_rdc=1&_rdr#"
+                target="_blank"
+                class="social-icon facebook"
+              >
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a
+                href="https://www.linkedin.com/feed/"
+                target="_blank"
+                class="social-icon linkedin"
+              >
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+              <a
+                href="https://github.com/Achintha-deshan"
+                target="_blank"
+                class="social-icon github"
+              >
+                <i class="fab fa-github"></i>
+              </a>
+            </div>
+          </div>
+          <div class="contact-form">
+            <form class="form-container">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Your Name"
+                required
+              />
+              <input
+                type="email"
+                class="form-control"
+                placeholder="Your Email"
+                required
+              />
+              <textarea
+                class="form-control"
+                rows="5"
+                placeholder="Your Message"
+                required
+              ></textarea>
+              <button type="submit" class="btn-primary">Send Message</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- JavaScript for Mobile Menu -->
+    <script src="/script.js"></script>
+  </body>
+</html>
